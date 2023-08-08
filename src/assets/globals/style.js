@@ -2,33 +2,53 @@ module.exports = {
     h1: {
         fontSize: 25,
     },
+    btn: {
+        width: '100%',
+        height: 50,
+        backgroundColor: '#FF3334',
+        padding: 15,
+        borderRadius: 5
+    },
     buttonPrimary: {
         alignItems: 'center',
         backgroundColor: '#FA6393',
         padding: 15,
-        width: "85%",
-        borderRadius: 10
+        width: "100%",
+        borderRadius: 5,
+        marginTop: 0
     },
-    card: {
+    headerH1: {
+        fontSize: 18,
+        fontWeight: '500',
+        color: 'white'
+    },
+    highlightText: {
+        backgroundColor: '#FF3334',
         padding: 10,
-        width: 120,
-        height: 120,
-        borderRadius: 15,
-        margin: 15
-    },
-    cardBgPrimary: {
-        backgroundColor: "#DF1B49",
-    },
-    cardTextPrimary: {
         color: "white",
-        textAlign: "center",
+        paddingLeft: 15,
+        fontWeight: "800",
+        letterSpacing: 0.5,
         fontSize: 15
     },
-    cardBgInfo: {
-        backgroundColor: "#E8EFF3",
+    avatar: {
+        width: 70,
+        height: 70,
+        borderRadius: 999,
+        borderWidth: 1,
+        borderColor: 'gray'
     },
-    cardTextInfo: {
-        color: "#6B6B6B",
-        textAlign: "center"
+    hr: {
+        width: "100%",
+        height: 1,
+        backgroundColor: 'lightgray'
+    },
+    Inputbox: {
+        padding: 5,
+        borderWidth: 1,
+        borderColor: 'lightgray',
+        fontSize: 18,
+        borderRadius: 5,
+        marginBottom: 15
     }
 }

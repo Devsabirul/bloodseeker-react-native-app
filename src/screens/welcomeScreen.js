@@ -1,13 +1,18 @@
-import { View, Text, Image, TouchableOpacity } from 'react-native'
+import { View, Text, Image, TouchableOpacity, StatusBar } from 'react-native'
 import React from 'react'
 import welcomeImage from '../assets/images/wlclogo.png'
 import { buttonPrimary } from '../assets/globals/style'
 import tw from 'twrnc'
 
 
-const WelcomeScreen = () => {
+const WelcomeScreen = ({ navigation }) => {
     return (
         <View style={tw`flex-1`}>
+            <StatusBar
+                backgroundColor="#FF3334"
+                hidden={false}
+                barStyle="light-content"
+            />
             <View style={tw`flex-2 items-center p-10`}>
                 <Image
                     style={{
@@ -25,13 +30,16 @@ const WelcomeScreen = () => {
                 </Text>
             </View>
             <View style={tw`flex-1 items-center justify-center`}>
-                <TouchableOpacity style={buttonPrimary}>
+                <TouchableOpacity
+                    style={[buttonPrimary, { width: "90%" }]}
+                    onPress={() => navigation.navigate('HomePage')}>
                     <Text style={{ color: 'white', fontSize: 15, fontWeight: 'bold', fontFamily: 'roboto' }}>
                         Let's Begin
                     </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={tw`mt-3`}
+                    onPress={() => navigation.navigate('HomePage')}
                 >
                     <Text style={tw`font-bold`}>
                         Skip Step
