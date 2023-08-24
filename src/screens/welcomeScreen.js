@@ -1,11 +1,18 @@
 import { View, Text, Image, TouchableOpacity, StatusBar } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import welcomeImage from '../assets/images/wlclogo.png'
 import { buttonPrimary } from '../assets/globals/style'
 import tw from 'twrnc'
 
 
 const WelcomeScreen = ({ navigation }) => {
+
+    useEffect(() => {
+        setTimeout(() => {
+            navigation.navigate('HomePage');
+        }, 3000);
+    }, [])
+
     return (
         <View style={tw`flex-1`}>
             <StatusBar

@@ -19,7 +19,7 @@ const CustomeDrawer = ({ navigation }) => {
     // route authentication
     const authRoute = () => {
         if (userToken !== null) {
-            navigation.navigate('DonorProfile')
+            navigation.navigate('BecomeDonor')
         } else {
             navigation.navigate('SignIn')
         }

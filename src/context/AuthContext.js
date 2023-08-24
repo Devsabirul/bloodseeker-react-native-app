@@ -1,9 +1,10 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { createContext, useEffect, useState } from "react";
-import { View, Text, ActivityIndicator } from "react-native";
-import { loginApi } from "../assets/globals/apiurl";
+import { loginApi, donorProfileDelete } from "../assets/globals/apiurl";
 import axios from "axios";
+import { Alert } from "react-native";
 export const AuthContext = createContext();
+import { BackHandler } from 'react-native';
 
 export const AuthProvider = ({ children }) => {
     const [userToken, setUserToken] = useState(null)
@@ -24,11 +25,12 @@ export const AuthProvider = ({ children }) => {
                 AsyncStorage.setItem('userToken', userInfo.tokens.access);
             })
             .catch((error) => {
-                console.log(error)
+                Alert.alert('Login Error', "Something wrong.")
             });
         setIsLoading(false)
     };
-    const logout = () => {
+
+    const logoutToken = () => {
         setIsLoading(true)
         setUserToken(null)
         AsyncStorage.removeItem('userInfo')
@@ -36,20 +38,41 @@ export const AuthProvider = ({ children }) => {
         setIsLoading(false)
     }
 
+    const logout = () => {
+        setIsLoading(true)
+        setUserToken(null)
+        AsyncStorage.removeItem('userInfo')
+        AsyncStorage.removeItem('userToken')
+        BackHandler.exitApp();
+        setIsLoading(false)
+    }
+
     const isLoggedIn = async () => {
         try {
             setIsLoading(true)
-            let userInfo = await AsyncStorage.getItem('userInfo')
+            let userInfos = await AsyncStorage.getItem('userInfo')
             let usertoken = await AsyncStorage.getItem('userToken')
-            userInfo = JSON.parse(userInfo)
-            if (userInfo) {
-                setUserInfo(userInfo)
+            userInfos = JSON.parse(userInfos)
+            if (userInfos) {
+                setUserInfo(userInfos)
                 setUserToken(usertoken)
             }
             setIsLoading(false)
-        } catch (e) {
+        } catch (e) { }
+    }
 
-        }
+    const deleteDonorProfile = async () => {
+        try {
+            const res = await axios.delete(donorProfileDelete + userInfo.username)
+            if (res.data.status === 'success') {
+                setIsLoading(true)
+                setUserToken(null)
+                AsyncStorage.removeItem('userInfo')
+                AsyncStorage.removeItem('userToken')
+                BackHandler.exitApp();
+                setIsLoading(false)
+            }
+        } catch (error) { }
     }
 
     useEffect(() => {
@@ -57,7 +80,7 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     return (
-        <AuthContext.Provider value={{ login, logout, userToken, userInfo, isLoading }}>
+        <AuthContext.Provider value={{ login, logout, userToken, userInfo, isLoading, deleteDonorProfile, logoutToken }}>
             {children}
         </AuthContext.Provider>
     )

@@ -49,7 +49,7 @@ const DonatorList = ({ navigation, refresh }) => {
                                             style={style.avatar}
                                         />
                                     </View>
-                                    <View style={[tw`ml-3`, { width: "70%" }]}>
+                                    <View style={[tw`ml-3`, { width: "68%" }]}>
                                         <Text
                                             style={[tw`font-medium mr-2`,
                                             { color: '#6C6A6A', fontSize: 20 }]}

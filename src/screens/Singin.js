@@ -7,23 +7,25 @@ import style from '../assets/globals/style';
 import { AuthContext } from '../context/AuthContext';
 import Toast from 'react-native-toast-message';
 import { showToast } from '../components/toast';
+import ProgressDialog from '../components/progressbar';
 
 const SignIn = ({ navigation }) => {
-    const { login, userToken, isLoading } = useContext(AuthContext)
+    const { login, userToken } = useContext(AuthContext)
     const [username, setUsername] = useState()
     const [password, setPassword] = useState()
+    const [isLoading, setIsLoading] = useState(false)
 
-    if (isLoading) {
-        return (
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <ActivityIndicator size='large' />
-            </View>
-        )
-    }
+    // if (isLoading) {
+    //     return (
+    //         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    //             <ActivityIndicator size='large' />
+    //         </View>
+    //     )
+    // }
 
     useEffect(() => {
         if (userToken !== null) {
-            navigation.navigate('DonorProfile')
+            navigation.navigate('BecomeDonor')
         }
         setUsername('')
         setPassword('')
@@ -41,6 +43,7 @@ const SignIn = ({ navigation }) => {
     return (
         <View style={tw`flex-1`} >
             <Toast />
+            <ProgressDialog visible={isLoading} />
             <View>
                 <View style={{ padding: 10, marginTop: 8, marginLeft: 6 }}>
                     <TouchableOpacity

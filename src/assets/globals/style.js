@@ -50,5 +50,31 @@ module.exports = {
         fontSize: 18,
         borderRadius: 5,
         marginBottom: 15
+    },
+    bgPrimary: {
+        backgroundColor: '#FA6393'
+    },
+    Inputboxs: {
+        padding: 15,
+        borderWidth: 1,
+        borderColor: 'lightgray',
+        fontSize: 17,
+        borderRadius: 5
+    },
+    uploadImg: {
+        padding: 5,
+        borderWidth: 1,
+        borderColor: 'lightgray',
+        borderRadius: 5
+    },
+    bloodSwitch: {
+        padding: 5,
+    },
+    editBtn: {
+        padding: 10,
+        backgroundColor: 'gray',
+        borderRadius: 5,
+        width: 120,
+        marginTop: 10
     }
 }

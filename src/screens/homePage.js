@@ -9,7 +9,6 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 const HomePage = ({ navigation, route }) => {
     const [refresh, setRefresh] = useState(false)
     const [search, setSearch] = useState("")
-    const goBackeValue = route.params?.goBackNav;
 
     const pullMe = () => {
         setRefresh(true)
@@ -39,7 +38,7 @@ const HomePage = ({ navigation, route }) => {
                             <Image
                                 source={BloodLogo}
                             />
-                            <Text style={{ fontSize: 20, color: "white", fontWeight: '400', marginLeft: 7 }}>Blood</Text>
+                            <Text style={{ fontSize: 20, color: "white", fontWeight: '400', marginLeft: 7 }}>Blood Seeker</Text>
                         </View>
                         <View>
                             <TouchableOpacity
